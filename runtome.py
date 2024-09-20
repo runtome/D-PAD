@@ -13,7 +13,7 @@ for dp in dp_values:
         
         # Build the command
         command = [
-            "python", "run_long.py",
+            "python", "run.py",
             "--data", "weather",
             "--data_path", "weather.csv",
             "--features", "M",

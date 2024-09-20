@@ -26,6 +26,7 @@ class Exp_ETT(Exp_Basic):
     def __init__(self, args):
         super(Exp_ETT, self).__init__(args)
         self.test_loader = self._get_data(flag = 'test')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
 
     def _build_model(self):
@@ -263,7 +264,7 @@ class Exp_ETT(Exp_Basic):
         mae = np.average(maes)
 
 
-        print('-----------start to {} {}-----------\n|  Normed  | mse:{:5.4f} | mae:{:5.4f} |'.format(self.args.rank, flag, mse, mae))
+        print('-----------start to {} -----------\n|  Normed  | mse:{:5.4f} | mae:{:5.4f} |'.format(flag, mse, mae))
         
         return total_loss
 
@@ -317,15 +318,15 @@ class Exp_ETT(Exp_Basic):
         return mse, mae 
 
 
-    def _process_one_batch_DPAD(self,batch_x, batch_y):
-        batch_x = batch_x.float().to(self.args.rank)
-        batch_y = batch_y.float()
+    def _process_one_batch_DPAD(self, batch_x, batch_y):
+        batch_x = batch_x.float().to(self.device)
+        batch_y = batch_y.float().to(self.device)
 
         outputs = self.model(batch_x)
 
         f_dim = -1 if self.args.features=='MS' else 0
         # batch_y
-        batch_y = batch_y[:,-self.args.pred_len:,f_dim:].to(self.args.rank)
+        batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
 
         return outputs, batch_y
 
