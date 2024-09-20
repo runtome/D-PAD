@@ -311,8 +311,8 @@ class Exp_ETT(Exp_Basic):
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
 
-            mae, mse, rmse, mape, mspe, corr = metric_(preds, trues)
-            print('Test:mse:{:.4f}, mae:{:.4f}, rmse:{:.4f}, mape:{:.4f}, mspe:{:.4f}, corr:{:.4f}'.format(mse, mae, rmse, mape, mspe, corr))
+            mae, mse, rmse, mape, mspe = metric_(preds, trues)
+            print('Test:mse:{:.4f}, mae:{:.4f}, rmse:{:.4f}, mape:{:.4f}, mspe:{:.4f}'.format(mse, mae, rmse, mape, mspe))
       
 
         return mse, mae 
