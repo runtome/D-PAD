@@ -10,7 +10,7 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 parser = argparse.ArgumentParser(description='Experiment on ETT dataset')
 
 # -------  Dataset settings --------------
-parser.add_argument('--model', type=str, default='DPAD_GCN',
+parser.add_argument('--model', type=str, default='DPAD_SE',
                     help='model of the experiment')
 parser.add_argument('--data', type=str, required=False, default='weather', 
                     choices=['ETTh1', 'ETTh2', 'ETTm1', 'ETTm2', 'ECL', 'traffic', 'weather', 'electricity'], 

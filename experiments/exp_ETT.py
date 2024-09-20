@@ -50,7 +50,7 @@ class Exp_ETT(Exp_Basic):
         else:
             print('Error!')
 
-        if 'DPAD_GAT' in self.args.model_name:
+        if 'DPAD_GAT' in self.args.model:
             model = DPAD_GAT(
                 output_len=self.args.pred_len,
                 input_len=self.args.seq_len,
@@ -62,7 +62,7 @@ class Exp_ETT(Exp_Basic):
                 K_IMP=self.args.K_IMP,
                 RIN=self.args.RIN
             )
-        elif 'DPAD_ATT' in self.args.model_name:
+        elif 'DPAD_ATT' in self.args.model:
             model = DPAD_ATT(
                 output_len=self.args.pred_len,
                 input_len=self.args.seq_len,
@@ -75,7 +75,7 @@ class Exp_ETT(Exp_Basic):
                 RIN=self.args.RIN,
                 num_heads = self.args.num_heads
             )
-        elif 'DPAD_SE' in self.args.model_name:
+        elif 'DPAD_SE' in self.args.model:
             model = DPAD_SE(
                 output_len=self.args.pred_len,
                 input_len=self.args.seq_len,
@@ -87,7 +87,7 @@ class Exp_ETT(Exp_Basic):
                 K_IMP=self.args.K_IMP,
                 RIN=self.args.RIN
             )
-        elif 'DPAD_GCN' in self.args.model_name:
+        elif 'DPAD_GCN' in self.args.model:
             model = DPAD_GCN(
                 output_len=self.args.pred_len,
                 input_len=self.args.seq_len,

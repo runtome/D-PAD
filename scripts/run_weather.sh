@@ -5,7 +5,7 @@ do
         for pred_len in 96 192 336 720
         do
             echo weather_${seq_len}-${pred_len}
-            python run_long.py \
+            python run.py \
                 --data weather \
                 --data_path weather.csv \
                 --features M \
