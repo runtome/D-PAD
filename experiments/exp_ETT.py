@@ -302,7 +302,7 @@ class Exp_ETT(Exp_Basic):
         trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
 
 
-        mae, mse, rmse, mape, mspe, corr = metric_(preds, trues)
+        mae, mse, rmse, mape, mspe = metric_(preds, trues)
         print('|  Normed  | mse:{:5.4f} | mae:{:5.4f} | rmse:{:5.4f} | mape:{:5.4f} | mspe:{:5.4f} | corr:{:5.4f} |'.format(mse, mae, rmse, mape, mspe, corr))
                 
         # result save
