@@ -8,15 +8,38 @@ def CORR(pred, true):
     d = np.sqrt(((true-true.mean(0))**2*(pred-pred.mean(0))**2).sum(0))
     return (u/d).mean()
 
+# def Corr(pred, true):
+#     sig_p = np.std(pred, axis=0)
+#     sig_g = np.std(true, axis=0)
+#     m_p = pred.mean(0)
+#     m_g = true.mean(0)
+#     ind = (sig_g != 0)
+#     corr = ((pred - m_p) * (true - m_g)).mean(0) / (sig_p * sig_g)
+#     corr = (corr[ind]).mean()
+#     return corr
 def Corr(pred, true):
     sig_p = np.std(pred, axis=0)
     sig_g = np.std(true, axis=0)
     m_p = pred.mean(0)
     m_g = true.mean(0)
+    
+    # Check dimensions
+    print("sig_p shape:", sig_p.shape)
+    print("sig_g shape:", sig_g.shape)
+    print("m_p shape:", m_p.shape)
+    print("m_g shape:", m_g.shape)
+    
     ind = (sig_g != 0)
     corr = ((pred - m_p) * (true - m_g)).mean(0) / (sig_p * sig_g)
-    corr = (corr[ind]).mean()
+    
+    # Ensure the index matches the shape
+    if corr.ndim > 1:
+        corr = corr[ind].mean()
+    else:
+        corr = corr.mean()  # Handle cases where corr is 1D
+    
     return corr
+
 
 def MAE(pred, true):
     return np.mean(np.abs(pred-true))
