@@ -303,7 +303,7 @@ class Exp_ETT(Exp_Basic):
 
 
         mae, mse, rmse, mape, mspe = metric_(preds, trues)
-        print('|  Normed  | mse:{:5.4f} | mae:{:5.4f} | rmse:{:5.4f} | mape:{:5.4f} | mspe:{:5.4f} | corr:{:5.4f} |'.format(mse, mae, rmse, mape, mspe, corr))
+        print('|  Normed  | mse:{:5.4f} | mae:{:5.4f} | rmse:{:5.4f} | mape:{:5.4f} | mspe:{:5.4f} | corr: |'.format(mse, mae, rmse, mape, mspe))
                 
         # result save
         if self.args.save:
